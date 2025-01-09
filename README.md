@@ -13,5 +13,5 @@ Course Management: Add, edit, or delete courses with their respective details (e
 Grade Entry: Update grades for students to calculate GPAs accurately.
 Analytics: View reports and summaries of student performance.
 
-#Technologies Used
-Java, Java Swing, JavaFx, Mysql 
+# Technologies Used
+Java, Java Swing, JavaFX, Mysql 
