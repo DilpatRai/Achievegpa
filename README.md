@@ -15,4 +15,3 @@ Analytics: View reports and summaries of student performance.
 
 # Technologies Used
 Java, Java Swing, JavaFX, Mysql 
-![WhatsApp Image 2024-12-05 at 02 18 13_678f8b10](https://github.com/user-attachments/assets/2ade6e3a-8ac0-483b-82e6-c8a3b04af092)
