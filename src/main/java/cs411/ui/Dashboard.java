@@ -288,7 +288,7 @@ public class Dashboard extends JFrame {
                     Services.getInstance().updateStudent(student);
                 }
                 JOptionPane.showMessageDialog(null, "Profile updated successfully");
-            } catch (Exception e) {
+            } catch (Exception event) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Failed to update profile");
             }
