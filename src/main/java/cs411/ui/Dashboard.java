@@ -260,7 +260,7 @@ public class Dashboard extends JFrame {
         JButton updateButton = new JButton("Update");
         updateButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         updateButton.setForeground(Config.PRIMARY_COLOR);
-        updateButton.addActionListener(e -> {
+        updateButton.addActionListener(event -> {
             if (passwordField.getText().trim().length() < 8) {
                 JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
                 return;
