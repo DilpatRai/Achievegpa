@@ -69,15 +69,16 @@ public class Dashboard extends JFrame {
         contentPanel = new JPanel(cardLayout);
         contentPanel.setBackground(Config.PRIMARY_COLOR);
 
-        tabs.forEach((tab, index) -> {
-    switch (tab) {
-        case "Courses" -> contentPanel.add(createCoursesTab(), tab);
-        case "Students" -> contentPanel.add(createStudentsTab(), tab);
-        case "Enrollments" -> contentPanel.add(Services.getInstance().isAdmin() ? createEnrollmentsTabForAdmin() : createEnrollmentsTabForStudent(), tab);
-        case "Results" -> contentPanel.add(createResultsTab(), tab);
-        default -> System.out.println("Invalid tab: " + tab);
-    }
-});
+        tabs.forEach((tab, _) -> {
+            switch (tab) {
+                case "Courses" -> contentPanel.add(createCoursesTab(), tab);
+                case "Students" -> contentPanel.add(createStudentsTab(), tab);
+                case "Enrollments" -> contentPanel.add(Services.getInstance().isAdmin() ? createEnrollmentsTabForAdmin() : createEnrollmentsTabForStudent(), tab);
+                case "Results" -> contentPanel.add(createResultsTab(), tab);
+                default -> System.out.println("Invalid tab: " + tab);
+
+            }
+        });
         add(contentPanel, BorderLayout.CENTER);
 
 
@@ -90,7 +91,7 @@ public class Dashboard extends JFrame {
         JButton profileButton = new JButton("Profile");
         profileButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         profileButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
-        profileButton.addActionListener(e -> openProfile());
+        profileButton.addActionListener(_ -> openProfile());
         profileButton.setOpaque(false);
         profileButton.setContentAreaFilled(false);
         profileButton.setBorderPainted(true);
@@ -260,7 +261,7 @@ public class Dashboard extends JFrame {
         JButton updateButton = new JButton("Update");
         updateButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         updateButton.setForeground(Config.PRIMARY_COLOR);
-        updateButton.addActionListener(event -> {
+        updateButton.addActionListener(_ -> {
             if (passwordField.getText().trim().length() < 8) {
                 JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long");
                 return;
@@ -288,7 +289,7 @@ public class Dashboard extends JFrame {
                     Services.getInstance().updateStudent(student);
                 }
                 JOptionPane.showMessageDialog(null, "Profile updated successfully");
-            } catch (Exception event) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Failed to update profile");
             }
@@ -326,7 +327,7 @@ public class Dashboard extends JFrame {
         myCoursesButton.setMinimumSize(new Dimension(250, 40));
         myCoursesButton.setPreferredSize(new Dimension(250, 40));
         myCoursesButton.setMaximumSize(new Dimension(250, 40));
-        myCoursesButton.addActionListener(e -> {
+        myCoursesButton.addActionListener(_ -> {
             List<Enrollment> enrollments = Services.getInstance().getEnrollments();
             Student student = Services.getInstance().getStudent();
             List<Course> courses = Services.getInstance().getCourses();
@@ -355,7 +356,7 @@ public class Dashboard extends JFrame {
         viewAllCoursesButton.setPreferredSize(new Dimension(250, 40));
         viewAllCoursesButton.setMaximumSize(new Dimension(250, 40));
 
-        viewAllCoursesButton.addActionListener(e -> {
+        viewAllCoursesButton.addActionListener(_ -> {
             new ViewAllCourses().setVisible(true);
         });
         viewAllCoursesButton.setOpaque(false);
@@ -502,7 +503,7 @@ public class Dashboard extends JFrame {
         buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
 
         JButton viewButton = new JButton("View/Edit");
-        viewButton.addActionListener(e -> {
+        viewButton.addActionListener(_ -> {
             if (selectedRow.apply(dataTable) == -1) {
                 JOptionPane.showMessageDialog(null, "Please select a student to view/edit");
                 return;
@@ -981,7 +982,7 @@ public class Dashboard extends JFrame {
         viewALlResultsButton.setPreferredSize(new Dimension(250, 40));
         viewALlResultsButton.setMaximumSize(new Dimension(250, 40));
 
-        viewALlResultsButton.addActionListener(e -> {
+        viewALlResultsButton.addActionListener(_ -> {
             new ViewAllResults().setVisible(true);
         });
         viewALlResultsButton.setOpaque(false);
