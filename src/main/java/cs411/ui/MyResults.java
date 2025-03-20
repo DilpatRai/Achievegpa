@@ -212,13 +212,13 @@ public class MyResults extends JFrame {
         Container container = new Container();
         container.setLayout(new FlowLayout());
         JButton addButton = new JButton("Add Result");
-        addButton.addActionListener(e -> {
+        addButton.addActionListener(_ -> {
             addResult(table);
         });
         addButton.setFont(new Font("Arial", Font.BOLD, 16));
         container.add(addButton);
         JButton visualize = new JButton("Visualize");
-        visualize.addActionListener(e -> {
+        visualize.addActionListener(_ -> {
             List<Integer> selectedRows = selectedRow.apply(table);
             if (selectedRows.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please select result(s) to visualize.");
@@ -237,7 +237,7 @@ public class MyResults extends JFrame {
         if(!myEnrollments.isEmpty()) container.add(visualize);
 
         JButton calculateGPA = new JButton("Calculate GPA");
-        calculateGPA.addActionListener(e -> {
+        calculateGPA.addActionListener(_ -> {
             List<Integer> selectedRows = selectedRow.apply(table);
             if (selectedRows.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please select result(s) to calculate.");
@@ -256,7 +256,7 @@ public class MyResults extends JFrame {
         if(!myEnrollments.isEmpty()) container.add(calculateGPA);
 
         JButton calculationHistory = new JButton("Calculation History");
-        calculationHistory.addActionListener(e -> {
+        calculationHistory.addActionListener(_ -> {
             List<GPA> gpas = Services.getInstance().getGPAs();
             Student student1 = Services.getInstance().getStudent();
             gpas = gpas.stream().filter(gpa -> gpa.getStudentID() == student1.getStudentID()).toList();
@@ -371,7 +371,7 @@ public class MyResults extends JFrame {
         }
         System.out.println(result);
 
-        Timer timer = new Timer(2000, e -> {
+        Timer timer = new Timer(2000, _ -> {
             dialogWindow.dispose();
             showGpaDialog(result);
         });
