@@ -41,7 +41,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t dilpatrai/achievegpa:latest .
+      run: docker build -t dilpatrai/achievegpa:latest -f Dockerfile.dockerfile .
 
     - name: Push Docker image
       run: docker push dilpatrai/achievegpa:latest
